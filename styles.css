@@ -19,32 +19,13 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-a {
-  text-decoration: none;
-  color: #007bff;
+.video-wrapper {
+  margin: 20px 0;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
-video {
+.video {
+  width: 320px; /* 웹캠 크기 */
+  height: 240px; /* 웹캠 크기 */
   border: 1px solid #ccc;
   border-radius: 8px;
-}
-
-#goToVideo {
-  background-color: #ccc;
-  color: #666;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: not-allowed;
-}
-
-#goToVideo:enabled {
-  cursor: pointer;
-  background-color: #007bff;
-  color: white;
 }

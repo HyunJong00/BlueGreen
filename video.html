@@ -7,12 +7,21 @@
   </head>
   <body>
     <div class="container">
-      <h1>영상 통화</h1>
-      <h2>사용자 1</h2>
-      <video id="localVideo" autoplay muted playsinline></video>
+      <div class="video-wrapper">
+        <h2>사용자 1</h2>
+        <video id="localVideo" class="video" autoplay muted playsinline></video>
+      </div>
 
-      <h2>사용자 2</h2>
-      <video id="remoteVideo" autoplay playsinline></video>
+      <div class="video-wrapper">
+        <h2>사용자 2</h2>
+        <video id="remoteVideo" class="video" autoplay playsinline></video>
+      </div>
+
+      <div>
+        <h2>화면 공유</h2>
+        <button id="startShare">화면 공유하기</button>
+        <button id="stopShare" disabled>화면 공유 종료하기</button>
+      </div>
     </div>
     <script src="client.js"></script>
   </body>
