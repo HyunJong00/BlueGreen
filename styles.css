@@ -1,0 +1,92 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.chat-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #f9f9f9;
+  border-left: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-box {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.chat-box p {
+  margin: 5px 0;
+  padding: 8px;
+  background-color: #e6e6e6;
+  border-radius: 5px;
+  word-wrap: break-word;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.chat-input button {
+  margin-left: 10px;
+  padding: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.chat-input button:hover {
+  background-color: #0056b3;
+}
+
+.container {
+  max-width: 800px;
+  padding: 20px;
+  text-align: center;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.video-section {
+  margin-left: 100px;
+  margin-right: 100px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.video-wrapper {
+  margin: 20px 0;
+}
+
+.video {
+  width: 320px; /* 웹캠 크기 */
+  height: 240px; /* 웹캠 크기 */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
