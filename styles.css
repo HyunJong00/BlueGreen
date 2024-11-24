@@ -75,7 +75,9 @@ body {
 }
 
 .video-section {
-  margin-right: 200px;
+  margin-left: 100px;
+  margin-right: 100px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .video-wrapper {
