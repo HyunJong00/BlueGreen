@@ -7,20 +7,33 @@
   </head>
   <body>
     <div class="container">
-      <div class="video-wrapper">
-        <h2>사용자 1</h2>
-        <video id="localVideo" class="video" autoplay muted playsinline></video>
+      <div class="video-section">
+        <div class="video-wrapper">
+          <h2>나</h2>
+          <video id="localVideo" class="video" autoplay muted playsinline></video>
+        </div>
+
+        <div class="video-wrapper">
+          <h2>상대</h2>
+          <video id="remoteVideo" class="video" autoplay playsinline></video>
+        </div>
+
+        <div>
+          <h2>화면 공유</h2>
+          <button id="startShare">화면 공유하기</button>
+          <button id="stopShare" disabled>화면 공유 종료하기</button>
+        </div>
       </div>
 
-      <div class="video-wrapper">
-        <h2>사용자 2</h2>
-        <video id="remoteVideo" class="video" autoplay playsinline></video>
-      </div>
-
-      <div>
-        <h2>화면 공유</h2>
-        <button id="startShare">화면 공유하기</button>
-        <button id="stopShare" disabled>화면 공유 종료하기</button>
+      <!-- 채팅 UI -->
+      <div class="chat-container">
+        <div id="chat-box" class="chat-box">
+          <!-- 채팅 메시지 표시 -->
+        </div>
+        <div class="chat-input">
+          <input id="chat-input" type="text" placeholder="메시지를 입력하세요" />
+          <button id="send-button">보내기</button>
+        </div>
       </div>
     </div>
     <script src="client.js"></script>

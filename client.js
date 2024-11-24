@@ -9,6 +9,10 @@ let peerConnection;
 
 const signalingServer = new WebSocket("ws://localhost:3000");
 
+const chatBox = document.getElementById("chat-box");
+const chatInput = document.getElementById("chat-input");
+const sendButton = document.getElementById("send-button");
+
 signalingServer.onopen = () => {
   console.log("WebSocket 서버에 연결되었습니다.");
 };
@@ -164,4 +168,52 @@ stopShareButton.addEventListener("click", () => {
   stopShareButton.disabled = true;
   startShareButton.disabled = false;
   console.log("화면 공유 중지");
+});
+
+function sendMessage() {
+  const message = chatInput.value.trim();
+  if (message) {
+    // WebSocket을 통해 메시지 전송
+    signalingServer.send(JSON.stringify({ type: "chat", message }));
+    addChatMessage("나: " + message, true); // 로컬에서 메시지 표시
+    chatInput.value = ""; // 입력 필드 초기화
+  }
+}
+
+// 메시지 수신 처리
+signalingServer.onmessage = (message) => {
+  const data = JSON.parse(message.data);
+
+  // 채팅 메시지 처리
+  if (data.type === "chat") {
+    addChatMessage("상대: " + data.message, false);
+  }
+
+  // 기존 WebRTC signaling 처리
+  if (data.offer) {
+    handleOffer(data.offer);
+  } else if (data.answer) {
+    handleAnswer(data.answer);
+  } else if (data.candidate) {
+    handleCandidate(data.candidate);
+  }
+};
+
+// 채팅 메시지 표시 함수
+function addChatMessage(message, isLocal) {
+  const msgElement = document.createElement("p");
+  msgElement.textContent = message;
+  msgElement.style.textAlign = isLocal ? "right" : "left"; // 내 메시지는 오른쪽 정렬
+  chatBox.appendChild(msgElement);
+  chatBox.scrollTop = chatBox.scrollHeight; // 스크롤 자동 내림
+}
+
+// "보내기" 버튼 클릭 이벤트
+sendButton.addEventListener("click", sendMessage);
+
+// Enter 키로 메시지 전송
+chatInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    sendMessage();
+  }
 });

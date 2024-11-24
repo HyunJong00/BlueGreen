@@ -58,16 +58,28 @@ wss.on("connection", (ws) => {
   ws.on("message", (message) => {
     try {
       const data = JSON.parse(message);
-      wss.clients.forEach((client) => {
-        if (client !== ws && client.readyState === WebSocket.OPEN) {
-          client.send(JSON.stringify(data));
-        }
-      });
+
+      if (data.type === "chat") {
+        // 수정: chat 메시지 처리
+        wss.clients.forEach((client) => {
+          if (client !== ws && client.readyState === WebSocket.OPEN) {
+            client.send(JSON.stringify({ type: "chat", message: data.message }));
+          }
+        });
+      } else {
+        // 수정: WebRTC signaling 메시지 처리
+        wss.clients.forEach((client) => {
+          if (client !== ws && client.readyState === WebSocket.OPEN) {
+            client.send(JSON.stringify(data));
+          }
+        });
+      }
     } catch (err) {
       console.error("Error handling message:", err);
     }
   });
 });
+
 
 server.listen(3000, () => {
   console.log("Server running at http://localhost:3000");
